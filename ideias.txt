@@ -1,0 +1,20 @@
+configuração
+	- deseja sumir da lista quando item for marcado como feito?
+
+Lista
+	- ao marcar como feito o item descer para ultima colocação
+	- ver melhor forma de colorir de acordo com prioridade e categoria
+	- pesquisar por descrição
+	- pesquisar por categoria
+	- filtrar por prioridade
+
+Menu
+	- lista de itens já concluidos
+	- lista de itens não concluidos
+	- lista de itens separados por categoria
+
+Prioridade
+	- Altissimo
+	- Alto
+	- Medio
+	- Baixo

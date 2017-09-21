@@ -12,6 +12,7 @@ public class RMCategory extends RealmObject{
     @PrimaryKey
     private int id;
     private String name;
+    private Integer color;
 
     public RMCategory(){
 
@@ -31,5 +32,13 @@ public class RMCategory extends RealmObject{
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Integer getColor() {
+        return color;
+    }
+
+    public void setColor(Integer color) {
+        this.color = color;
     }
 }
