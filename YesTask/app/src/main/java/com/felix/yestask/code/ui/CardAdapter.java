@@ -1,11 +1,14 @@
 package com.felix.yestask.code.ui;
 
+import android.content.Context;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import com.felix.yestask.R;
 import com.felix.yestask.code.model.UserModel;
+import com.felix.yestask.code.util.InteractionAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,26 +17,33 @@ import java.util.Locale;
 public class CardAdapter extends RecyclerView.Adapter<CardHolder> {
 
     private final List<UserModel> mUsers;
+    private InteractionAdapter interactionAdapter;
+    private Context context;
 
-    public CardAdapter(List<UserModel> users) {
+    public CardAdapter(Context context, List<UserModel> users, InteractionAdapter interactionAdapter) {
+        this.context = context;
         this.mUsers = users;
+        this.interactionAdapter = interactionAdapter;
     }
 
     @Override
     public CardHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new CardHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.main_card_view, parent, false));
+        return new CardHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.main_line_view, parent, false), interactionAdapter);
     }
 
     @Override
     public void onBindViewHolder(CardHolder holder, int position) {
-        holder.title.setText(String.format(Locale.getDefault(), "%s, %d - %s",
-                mUsers.get(position).getName(),
-                mUsers.get(position).getAge(),
-                mUsers.get(position).getCity()
-        ));
-        holder.desc.setText(mUsers.get(position).getDescription());
-        //holder.moreButton.setOnClickListener(view -> updateItem(position));
-        //holder.deleteButton.setOnClickListener(view -> removerItem(position));
+        UserModel user = mUsers.get(position);
+
+        holder.title.setText(user.getDescription());
+        holder.category.setText(user.getCity());
+        holder.timeClock.setText(user.getAge()+":00");
+
+        if(user.isCheck()){
+            holder.imgCheck.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.circle_2));
+        }else{
+            holder.imgCheck.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.circle_1));
+        }
     }
 
     @Override
@@ -60,5 +70,17 @@ public class CardAdapter extends RecyclerView.Adapter<CardHolder> {
     public void updateList(UserModel user) {
         insertItem(user);
     }
+
+    public void checkUncheck(int position){
+        if (mUsers.get(position) != null){
+            if(mUsers.get(position).isCheck()){
+                mUsers.get(position).setCheck(false);
+            }else{
+                mUsers.get(position).setCheck(true);
+            }
+            notifyItemChanged(position);
+        }
+    }
+
 }
 
