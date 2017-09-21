@@ -8,6 +8,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
+import android.view.animation.AnimationUtils;
+import android.view.animation.LayoutAnimationController;
 
 import com.felix.yestask.code.model.UserModel;
 import com.felix.yestask.code.ui.CardAdapter;
@@ -32,6 +34,10 @@ public class MainActivity extends AppCompatActivity implements InteractionAdapte
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(layoutManager);
         mRecyclerView.addItemDecoration(new DividerItemDecoration(this, layoutManager.getOrientation()));
+
+        int resId = R.anim.layout_animation_from_bottom;
+        LayoutAnimationController animation = AnimationUtils.loadLayoutAnimation(this, resId);
+        mRecyclerView.setLayoutAnimation(animation);
 
         mAdapter = new CardAdapter(this, getList(), this);
         mRecyclerView.setAdapter(mAdapter);
