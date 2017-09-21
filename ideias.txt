@@ -1,20 +1,20 @@
-configuraÁ„o
+configura√ß√£o
 	- deseja sumir da lista quando item for marcado como feito?
 
 Lista
-	- ao marcar como feito o item descer para ultima colocaÁ„o
+	- ao marcar como feito o item descer para ultima coloca√ß√£o
 	- ver melhor forma de colorir de acordo com prioridade e categoria
-	- pesquisar por descriÁ„o
+	- pesquisar por descri√ß√£o
 	- pesquisar por categoria
 	- filtrar por prioridade
 
 Menu
-	- lista de itens j· concluidos
-	- lista de itens n„o concluidos
+	- lista de itens j√° concluidos
+	- lista de itens n√£o concluidos
 	- lista de itens separados por categoria
 
 Prioridade
 	- Altissimo
 	- Alto
 	- Medio
-	- Baixo
+	- Baixo (por padr√£o todos serem baixos)
