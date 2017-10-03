@@ -1,2 +1,2 @@
 # yestask
-App made in kotlin for study purposes
+Application made in kotlin (or almost everything) for study purposes
