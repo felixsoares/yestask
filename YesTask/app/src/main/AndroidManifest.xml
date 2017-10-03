@@ -3,12 +3,12 @@
     package="com.felix.yestask">
 
     <application
+        android:name=".code.util.PrefsApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:name=".code.util.PrefsApplication"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
             <intent-filter>

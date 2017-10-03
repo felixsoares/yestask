@@ -10,9 +10,7 @@ import com.felix.yestask.R;
 import com.felix.yestask.code.model.UserModel;
 import com.felix.yestask.code.util.InteractionAdapter;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 public class CardAdapter extends RecyclerView.Adapter<CardHolder> {
 
@@ -39,7 +37,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardHolder> {
         holder.category.setText(user.getCity());
         holder.timeClock.setText(user.getAge()+":00");
 
-        if(user.isCheck()){
+        if(user.getCheck()){
             holder.imgCheck.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.circle_2));
         }else{
             holder.imgCheck.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.circle_1));
@@ -56,8 +54,8 @@ public class CardAdapter extends RecyclerView.Adapter<CardHolder> {
         notifyItemInserted(getItemCount());
     }
 
-    private void updateItem(int position) {
-        mUsers.get(position).incrementAge();
+    private void updateItem(int position, UserModel userModel) {
+        mUsers.add(position, userModel);
         notifyItemChanged(position);
     }
 
@@ -67,13 +65,9 @@ public class CardAdapter extends RecyclerView.Adapter<CardHolder> {
         notifyItemRangeChanged(position, mUsers.size());
     }
 
-    public void updateList(UserModel user) {
-        insertItem(user);
-    }
-
     public void checkUncheck(int position){
         if (mUsers.get(position) != null){
-            if(mUsers.get(position).isCheck()){
+            if(mUsers.get(position).getCheck()){
                 mUsers.get(position).setCheck(false);
             }else{
                 mUsers.get(position).setCheck(true);

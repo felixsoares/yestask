@@ -3,22 +3,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.felix.yestask.MainActivity">
+    android:layout_height="match_parent">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/mRecyclerView"
-        android:layout_above="@+id/llBottom"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        tools:listitem="@layout/main_line_view"/>
 
-    <LinearLayout
-        android:id="@+id/llBottom"
-        android:orientation="horizontal"
+    <android.support.design.widget.FloatingActionButton
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="16dp"
+        android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:layout_width="match_parent"
-        android:layout_height="50dp">
-
-    </LinearLayout>
+        android:src="@drawable/plus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
 </RelativeLayout>

@@ -1,0 +1,49 @@
+package com.felix.yestask
+
+import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.DividerItemDecoration
+import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
+import android.view.View
+import android.view.animation.AnimationUtils
+import com.felix.yestask.code.model.UserModel
+import com.felix.yestask.code.ui.CardAdapter
+import com.felix.yestask.code.util.InteractionAdapter
+
+class MainActivity : AppCompatActivity(), InteractionAdapter {
+
+    private lateinit var adapter: CardAdapter
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+        var mRecyclerView = findViewById(R.id.mRecyclerView) as RecyclerView
+
+        val layoutManager = LinearLayoutManager(this)
+        mRecyclerView.layoutManager = layoutManager
+        mRecyclerView.addItemDecoration(DividerItemDecoration(this, layoutManager.orientation))
+
+        val animation = AnimationUtils.loadLayoutAnimation(this, R.anim.layout_animation_from_bottom)
+        mRecyclerView.layoutAnimation = animation
+
+        adapter = CardAdapter(this, getList(), this)
+        mRecyclerView.adapter = adapter
+    }
+
+    private fun getList(): List<UserModel> {
+        val list = mutableListOf<UserModel>()
+        list.add(UserModel("Felix", "Anápolis", "é caindo que se aprende a andar", 14, false))
+        list.add(UserModel("Teste 1", "Anápolis", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean eu placerat lectus, ullamcorper porttitor leo. Nunc quis hendrerit mi, nec viverra nisl.", 10, true))
+        list.add(UserModel("Teste 2", "Anápolis", "Vivamus vitae vulputate orci", 23, true))
+        list.add(UserModel("Teste 3", "Anápolis", "Vivamus porta lacinia nisi, eleifend blandit massa lobortis non. Nunc quis velit id lorem aliquam convallis.", 2, false))
+        list.add(UserModel("Teste 4", "Anápolis", "Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.", 23, true))
+        list.add(UserModel("Felix", "Anápolis", "é caindo que se aprende a andar", 80, false))
+        return list
+    }
+
+    override fun onClickItem(view : View?, position: Int) {
+        adapter.checkUncheck(position)
+    }
+}
