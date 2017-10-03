@@ -7,18 +7,18 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import com.felix.yestask.R;
-import com.felix.yestask.code.model.UserModel;
+import com.felix.yestask.code.model.TestModel;
 import com.felix.yestask.code.util.InteractionAdapter;
 
 import java.util.List;
 
 public class CardAdapter extends RecyclerView.Adapter<CardHolder> {
 
-    private final List<UserModel> mUsers;
+    private final List<TestModel> mUsers;
     private InteractionAdapter interactionAdapter;
     private Context context;
 
-    public CardAdapter(Context context, List<UserModel> users, InteractionAdapter interactionAdapter) {
+    public CardAdapter(Context context, List<TestModel> users, InteractionAdapter interactionAdapter) {
         this.context = context;
         this.mUsers = users;
         this.interactionAdapter = interactionAdapter;
@@ -31,7 +31,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardHolder> {
 
     @Override
     public void onBindViewHolder(CardHolder holder, int position) {
-        UserModel user = mUsers.get(position);
+        TestModel user = mUsers.get(position);
 
         holder.title.setText(user.getDescription());
         holder.category.setText(user.getCity());
@@ -49,13 +49,13 @@ public class CardAdapter extends RecyclerView.Adapter<CardHolder> {
         return mUsers != null ? mUsers.size() : 0;
     }
 
-    private void insertItem(UserModel user) {
+    private void insertItem(TestModel user) {
         mUsers.add(user);
         notifyItemInserted(getItemCount());
     }
 
-    private void updateItem(int position, UserModel userModel) {
-        mUsers.add(position, userModel);
+    private void updateItem(int position, TestModel testModel) {
+        mUsers.add(position, testModel);
         notifyItemChanged(position);
     }
 
