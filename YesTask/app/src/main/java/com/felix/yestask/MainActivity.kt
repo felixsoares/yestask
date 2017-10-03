@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity(), InteractionAdapter {
         mRecyclerView.adapter = adapter
     }
 
-    private fun getList(): List<TestModel> {
+    private fun getList(): MutableList<TestModel> {
         val list = mutableListOf<TestModel>()
         list.add(TestModel("Felix", "Anápolis", "é caindo que se aprende a andar", 14, false))
         list.add(TestModel("Teste 1", "Anápolis", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean eu placerat lectus, ullamcorper porttitor leo. Nunc quis hendrerit mi, nec viverra nisl.", 10, true))
