@@ -12,7 +12,6 @@ class RMActivity : RealmObject() {
     var id: Int = 1
     var title: String? = null
     var description: String? = null
-    var clock: String? = null
     var category: RMCategory? = null
     var date: Date? = null
     var dateDone: Date? = null

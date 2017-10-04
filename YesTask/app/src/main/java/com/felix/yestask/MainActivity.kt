@@ -1,6 +1,8 @@
 package com.felix.yestask
 
+import android.content.Intent
 import android.os.Bundle
+import android.support.design.widget.FloatingActionButton
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
@@ -10,8 +12,10 @@ import android.view.animation.AnimationUtils
 import com.felix.yestask.code.model.TestModel
 import com.felix.yestask.code.ui.CardAdapter
 import com.felix.yestask.code.util.InteractionAdapter
+import com.felix.yestask.scene.form.FormActivity
+import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity(), InteractionAdapter {
+class MainActivity : AppCompatActivity(), View.OnClickListener ,InteractionAdapter {
 
     private lateinit var adapter: CardAdapter
 
@@ -30,6 +34,8 @@ class MainActivity : AppCompatActivity(), InteractionAdapter {
 
         adapter = CardAdapter(this, getList(), this)
         mRecyclerView.adapter = adapter
+
+        fabAdd.setOnClickListener(this)
     }
 
     private fun getList(): MutableList<TestModel> {
@@ -45,5 +51,9 @@ class MainActivity : AppCompatActivity(), InteractionAdapter {
 
     override fun onClickItem(view : View?, position: Int) {
         adapter.checkUncheck(position)
+    }
+
+    override fun onClick(p0: View?) {
+        startActivity(Intent(this, FormActivity::class.java))
     }
 }
